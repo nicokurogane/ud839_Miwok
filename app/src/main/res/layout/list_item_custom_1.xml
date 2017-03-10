@@ -1,22 +1,50 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!-- Este layout es usado por un listview y muestra dos texview
+ uno para la palabra en miwok y otro para la palabra en ingles-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/activity_vertical_margin"
-   >
+    android:background="@color/tan_background"
+    android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/textview_miwok_word"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="miwok"/>
 
-    <TextView
-        android:id="@+id/textview_english_word"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="english"/>
+    <ImageView
+        android:id="@+id/image_word"
+        android:layout_width="@dimen/list_item_height"
+        android:layout_height="@dimen/list_item_height" />
+
+    <LinearLayout
+        android:id="@+id/text_container"
+        android:layout_width="0dp"
+        android:layout_height="88dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textview_miwok_word"
+                style="@style/WordsStyle1"
+                tools:text="miwok" />
+
+            <TextView
+                android:id="@+id/textview_english_word"
+                style="@style/WordsStyle2"
+                tools:text="english" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_play_arrow_white_24dp" />
+    </LinearLayout>
+
 
 </LinearLayout>

@@ -1,10 +1,12 @@
 package com.example.android.miwok.adapters;
 
 import android.app.Activity;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.android.miwok.R;
@@ -23,8 +25,12 @@ public class WordAdapter extends ArrayAdapter<Word> {
     necesita un contexto para poder inflar el xml del listview, posicion inicial dentro del array
     de la data necesaria
     */
-    public WordAdapter(Activity context, ArrayList<Word> words) {
+
+    private  int backgroundColor;
+
+    public WordAdapter(Activity context, ArrayList<Word> words, int backgroundColor) {
         super(context, 0, words);
+        this.backgroundColor = backgroundColor;
     }
 
 
@@ -43,7 +49,8 @@ public class WordAdapter extends ArrayAdapter<Word> {
 
         if (listItemView == null) {
             //llamamos el layout personalizado para inflar la vista con el diseno deseado
-            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_custom_1, parent, false);
+       //     listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_custom_1, parent, false);
+            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_2, parent, false);
         }
 
         //obtenemos el objeto localizado en esta posicion dentro de la lista.
@@ -59,12 +66,21 @@ public class WordAdapter extends ArrayAdapter<Word> {
         TextView englishTextView = (TextView) listItemView.findViewById(R.id.textview_english_word);
         englishTextView.setText(currentWord.getDefaultTranslation());
 
-/*TODO>>> SETEAR LA IMAGEN LUEGO....
+
+
         // Find the ImageView in the list_item.xml layout with the ID list_item_icon
-        ImageView iconView = (ImageView) listItemView.findViewById(R.id.list_item_icon);
+        ImageView iconView = (ImageView) listItemView.findViewById(R.id.image_word);
         // Get the image resource ID from the current AndroidFlavor object and
         // set the image to iconView
-        iconView.setImageResource(currentAndroidFlavor.getImageResourceId());*/
+
+        if( !currentWord.hasImage())
+            iconView.setVisibility(View.GONE);
+        else
+            iconView.setImageResource(currentWord.getImageResourceId());
+
+        View textContainer = listItemView.findViewById(R.id.text_container);
+        int  color = ContextCompat.getColor(getContext(),backgroundColor);
+        textContainer.setBackgroundColor(color);
 
         return listItemView;
     }
