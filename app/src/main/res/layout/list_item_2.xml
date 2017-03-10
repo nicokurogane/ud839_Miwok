@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?><!-- Este layout es usado por un listview y muestra dos texview
+ uno para la palabra en miwok y otro para la palabra en ingles
+ version modificada con relative layout
+ -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/list_item_height"
+    android:background="@color/tan_background"
+    android:orientation="horizontal">
+
+
+    <ImageView
+        android:id="@+id/image_word"
+        android:layout_width="@dimen/list_item_height"
+        android:layout_height="@dimen/list_item_height"
+        />
+
+    <LinearLayout
+        android:id="@+id/text_container"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/list_item_height"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/image_word"
+        android:orientation="vertical"
+        android:paddingLeft="16dp">
+
+
+            <TextView
+                android:id="@+id/textview_miwok_word"
+                style="@style/WordsStyle1"
+                tools:text="miwok" />
+
+            <TextView
+                android:id="@+id/textview_english_word"
+                style="@style/WordsStyle2"
+                tools:text="english" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/ic_play_arrow_white_24dp" />
+
+
+
+</RelativeLayout>
